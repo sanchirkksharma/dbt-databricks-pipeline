@@ -1,15 +1,44 @@
-Welcome to your new dbt project!
+### Project Overview
+This project implements a dbt-based data transformation pipeline on Databricks using the medallion architecture (Bronze → Silver → Gold).
 
-### Using the starter project
+The pipeline ingests raw data, performs transformations, applies data quality tests, and builds analytics-ready datasets for reporting.
 
-Try running the following commands:
-- dbt run
-- dbt test
+# dbt is used to manage:
+-SQL transformations
+-data lineage
+-testing
+-documentation
+-environment deployment (dev → prod)
 
+### Architecture
+The project follows the Medallion Architecture.
+# Bronze Layer
+Models:
+-bronze_customer
+-bronze_product
+-bronze_sales
+-bronze_returns
+-bronze_store
+-bronze_date
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+# Silver Layer
+Models:
+-silver_sales_obt
+-silver_returns_obt
+
+# Gold Layer
+Models:
+-gold_item
+-dedup
+
+### Environment Configuration
+Environment separation is handled using targets in profiles.yml.
+Environment -->	Catalog
+dev-->	dbt_dev
+prod-->	dbt_prod
+
+### Running the Project
+1. Activate the virtual environment: source .venv/bin/activate
+2. Run transformations: dbt build
+3. Run tests only: dbt test
+4. Run snapshots: dbt snapshot
