@@ -22,19 +22,19 @@ Models:
 -bronze_date  
 
 ### Silver Layer
-Models: 
+Models:   
 -silver_sales_obt  
 -silver_returns_obt  
 
 ### Gold Layer
-Models: 
+Models:  
 -gold_item  
 -dedup  
 
 ## Environment Configuration
 Environment separation is handled using targets in profiles.yml.  
 Environment -->	Catalog  
-dev-->	dbt_dev 
+dev-->	dbt_dev  
 prod-->	dbt_prod  
 
 ## Running the Project
