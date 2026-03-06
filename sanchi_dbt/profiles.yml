@@ -1,0 +1,19 @@
+sanchi_dbt:
+  outputs:
+    dev:
+      catalog: dbt_dev
+      host: dbc-49eadbf5-dc1f.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/cf92d7a03f41134c
+      schema: default
+      threads: 1
+      token: "{{ env_var('DATABRICKS_TOKEN') }}"
+      type: databricks
+    prod:
+      catalog: dbt_prod
+      host: dbc-49eadbf5-dc1f.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/cf92d7a03f41134c
+      schema: default
+      threads: 1
+      token: "{{ env_var('DATABRICKS_TOKEN') }}"
+      type: databricks
+  target: dev

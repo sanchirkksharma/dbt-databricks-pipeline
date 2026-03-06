@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: bronze_sales
+    description: This table contains the raw sales data ingested from the source system.
+    columns:
+      - name: sales_id
+        description: Primary key of the table
+        data_tests:
+          - unique
+          - not_null
+      - name: gross_amount
+        data_tests:
+          - generic_non_negative
+  - name: bronze_store
+    columns:
+      - name: store_sk
+        description: Primary key of the table
+        data_tests:
+          - unique
+          - not_null
+      - name: store_name
+        data_tests:
+         - accepted_values: 
+            arguments:
+                values: ['MegaMart Manhattan', 'MegaMart Brooklyn', 'MegaMart Austin', 'MegaMart Toronto', 'MegaMart San Jose']
+            config:
+                severity: warn
